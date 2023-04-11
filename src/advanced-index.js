@@ -1,6 +1,6 @@
 const {
   createTable,
-  truncate,
+  dropTable,
   closeConnection,
   insertMultipleBooks,
 } = require('./starter-queries');
@@ -28,9 +28,9 @@ const main = async () => {
   await aliasIsMovie();
   await countBooksInGenres();
 
-  // We remove the table rows (not the table) so we can run the queries again
-  // without the database getting too big
-  await truncate();
+  // We drop the table so we can recreate it and run the queries again
+  // without the database getting too unwieldy
+  await dropTable();
 
   // We have to close the connection when we're done
   closeConnection();
